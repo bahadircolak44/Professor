@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="En Çok Puan Alanlar">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>main</title>
+     <link rel="stylesheet" href="{%static 'nicepage.css' %}" media="screen">
+        <link rel="stylesheet" href="{%static 'login.css' %}" media="screen">
+<link rel="stylesheet" href="{%static 'main.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{%static 'jquery.js' %}" defer=""></script>
+
+    <script class="u-script" type="text/javascript" src="{%static 'nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+
+    <meta property="og:title" content="main">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+    <link rel="canonical" href="{%static 'index.html' %}">
+    <meta property="og:url" content="{%static 'index.html' %}">
+  </head>
+  <body class="u-body"><header class="u-clearfix u-header u-image u-header" id="sec-984e" data-animation-name="" data-animation-duration="0" data-animation-delay="0" data-animation-direction="" data-image-width="150" data-image-height="100"><div class="u-clearfix u-sheet u-sheet-1">
+        <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="80" data-image-height="40">
+          <img src="{%static 'images/default-logo.png' %}" class="u-logo-image u-logo-image-1" data-image-width="64">
+        </a>
+      </div></header>
+    <section class="u-align-center u-clearfix u-white u-section-1" id="carousel_8399">
+    {% csrf_token %}
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-tab-links-align-justify u-tabs u-tabs-1">
+          <ul class="u-border-2 u-border-palette-2-base u-spacing-10 u-tab-list u-unstyled" role="tablist">
+            <li class="u-tab-item" role="presentation">
+              <a class="active u-active-palette-2-base u-button-style u-tab-link u-text-active-white u-text-hover-palette-2-base u-tab-link-1" id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true">Hocalar</a>
+            </li>
+            <li class="u-tab-item" role="presentation">
+              <a class="u-active-palette-2-base u-button-style u-tab-link u-text-active-white u-text-hover-palette-2-base u-tab-link-2" id="link-tab-14b7" href="#tab-14b7" role="tab" aria-controls="tab-14b7" aria-selected="false">Üniversiteler</a>
+            </li>
+          </ul>
+          <div class="u-tab-content">
+            <div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-0da5" role="tabpanel" aria-labelledby="link-tab-0da5">
+              <div class="u-container-layout u-container-layout-1">
+                <p class="u-text u-text-1">Sample text. Click to select the text box. Click again or double click to start editing the text. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <div class="u-align-center u-table u-table-responsive u-table-1">
+                  <table class="u-table-entity u-table-entity-1">
+                    <colgroup>
+                      <col width="83.3%">
+                      <col width="16.7%">
+                    </colgroup>
+                    <thead class="u-custom-font u-heading-font u-table-header u-table-header-1">
+                      <tr style="height: 41px;">
+                        <th class="u-border-2 u-border-palette-2-light-2 u-table-cell">akademİsyen adı</th>
+                        <th class="u-border-2 u-border-palette-2-light-2 u-table-cell">puanı</th>
+                      </tr>
+                    </thead>
+                    <tbody class="u-table-body">
+                      {% csrf_token %}
+                    {% for p in professor %}
+                      <tr style="height: 49px;">
+                        <td class="u-border-2 u-border-palette-2-light-2 u-table-cell u-table-cell-3">{{ p.first_name }} {{ p.last_name }}</td>
+                        <td class="u-border-2 u-border-palette-2-light-2 u-palette-3-light-3 u-table-cell u-table-cell-4">
+                            {{ p.rate }}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="u-align-left u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-14b7" role="tabpanel" aria-labelledby="link-tab-14b7">
+              <div class="u-container-layout u-container-layout-2">
+                <p class="u-text u-text-2">Sample text. Click to select the text box. Click again or double click to start editing the text. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <div class="u-table u-table-responsive u-table-2">
+                  <table class="u-table-entity">
+                    <colgroup>
+                      <col width="83.2%">
+                      <col width="16.8%">
+                    </colgroup>
+                    <thead class="u-custom-font u-heading-font u-table-header u-table-header-2">
+                      <tr style="height: 45px;">
+                        <th class="u-border-2 u-border-palette-2-light-2 u-table-cell">ÜNİVERSİTE Adı</th>
+                        <th class="u-border-2 u-border-palette-2-light-2 u-table-cell">PUANı</th>
+                      </tr>
+                    </thead>
+                    <tbody class="u-table-body">
+                    {% for u in university %}
+                      <tr style="height: 49px;">
+                        <td class="u-border-2 u-border-palette-2-light-2 u-table-cell u-table-cell-15">{{ u.name }}</td>
+                        <td class="u-border-2 u-border-palette-2-light-2 u-palette-3-light-3 u-table-cell u-table-cell-16">
+                            {{ u.rate }}</td>
+                      </tr>
+                    {% endfor %}
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="u-clearfix u-image u-section-2" id="sec-b043" data-image-width="150" data-image-height="117">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-form u-form-1">
+          <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="custom" name="form">
+            <div class="u-form-group u-form-select u-form-group-1">
+              <label for="select-faf8" class="u-form-control-hidden u-label">Select</label>
+              <div class="u-form-select-wrapper">
+                <select id="select-faf8" name="university" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                  <option value="Item 1">Item 1</option>
+                  <option value="Item 2">Item 2</option>
+                  <option value="Item 3">Item 3</option>
+                </select>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="12" version="1" class="u-caret"><path fill="currentColor" d="M4 8L0 4h8z"></path></svg>
+              </div>
+            </div>
+            <div class="u-align-center u-form-group u-form-submit">
+              <a href="#" class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-1">Hocaları Listele</a>
+              <input type="submit" value="submit" class="u-form-control-hidden">
+            </div>
+            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
+            <input type="hidden" value="" name="recaptchaResponse">
+          </form>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-833a"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/html-templates" target="_blank">
+        <span>HTML Template</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="https://nicepage.com/" target="_blank">
+        <span>Offline Website Builder Software</span>
+      </a>. 
+    </section>
+  </body>
+</html>
