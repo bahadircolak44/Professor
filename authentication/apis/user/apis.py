@@ -25,7 +25,7 @@ class UserLoginView(View):
         if user:
             login(request, user)
             token = UserHelpers.generate_token(user)
-            return HttpResponseRedirect('/register/')
+            return HttpResponseRedirect('/main/')
         return HttpResponse(status=status.HTTP_200_OK)
 
 
