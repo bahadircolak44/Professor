@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from api.apis.main_page.api import MainPageView
+from api.apis.professor.api import ProfessorViewSet
 from authentication.apis.user.apis import UserLoginView, UserRegisterStepView, UserRegisterView
 
 urlpatterns = [
@@ -27,5 +28,6 @@ urlpatterns = [
     path('login/', UserLoginView.as_view(), name='login'),
     path('step/', UserRegisterStepView.as_view(), name='step'),
     path('register/', UserRegisterView.as_view(), name='register'),
-    path('main/', MainPageView.as_view(), name='main')
+    path('main/', MainPageView.as_view(), name='main'),
+    path('professor/', ProfessorViewSet.as_view(), name='professor')
 ]

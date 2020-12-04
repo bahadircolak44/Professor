@@ -5,7 +5,7 @@ from api.db_models.universities import Universities
 
 
 class ProfessorGetForm(forms.Form):
-    university_id = forms.IntegerField(required=True)
+    prof_id = forms.IntegerField(required=True)
 
 
 class ProfessorForm(forms.ModelForm):

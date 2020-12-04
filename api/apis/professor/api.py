@@ -14,9 +14,9 @@ class ProfessorViewSet(View):
         if not form.errors:
             professor_id = form.cleaned_data.get('prof_id')
             professor = Professor.objects.filter(id=professor_id).first()
-            professor_form = ProfessorForm(data=professor)
+            professor_form = ProfessorForm(instance=professor)
             professor_form.is_valid()
             if not professor_form.errors:
                 context = dict(forms=professor_form)
-                return render(request, status=status.HTTP_200_OK, template_name='prof_page', context=context)
+                return render(request, template_name='prof_page.html', context=context)
         return HttpResponseRedirect('/login/')

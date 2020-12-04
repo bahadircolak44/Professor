@@ -28,8 +28,8 @@
     <section class="u-align-center u-clearfix u-section-1" id="carousel_e132">
       <div class="u-clearfix u-sheet u-sheet-1">
           {% csrf_token %}
-        <h1 class="u-text u-text-1">{{ forms.first_name }} {{ forms.last_name }}</h1>
-        <h6 class="u-text u-text-2">{{ forms.email }}</h6>
+        <h1 class="u-text u-text-1">{{ forms.initial.first_name }} {{ forms.initial.last_name }}</h1>
+        <h6 class="u-text u-text-2">{{ forms.initial.email }}</h6>
         <div class="u-table u-table-responsive u-table-1">
           <table class="u-table-entity u-table-entity-1">
             <colgroup>
@@ -46,31 +46,31 @@
             {% csrf_token %}
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Kibar</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.kindness }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.kindness }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Öğretme Beğenisi</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.teach_rate }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.teach_rate }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Öğrenciye Yaklaşımı</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.approach_rate }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.approach_rate }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Seksi</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.hot_rate }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.hot_rate }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Still</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.style }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.style }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Maaş Tahmini</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.salary_estimation }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.salary_estimation }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Toplam</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.total_rate }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.total_rate }}</td>
               </tr>
             </tbody>
           </table>

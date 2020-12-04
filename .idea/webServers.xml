@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="bfe14572-dde6-4102-bee5-f6734a9c917a" name="ec2-15-161-243-87.eu-south-1.compute.amazonaws.com">
+        <fileTransfer accessType="SFTP" host="ec2-15-161-243-87.eu-south-1.compute.amazonaws.com" port="22" sshConfigId="c87a0ee9-4e2d-44dc-9f6f-b5b891944fc4" sshConfig="centos@ec2-15-161-243-87.eu-south-1.compute.amazonaws.com:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

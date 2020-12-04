@@ -3,6 +3,7 @@
   <component name="SshConfigs">
     <configs>
       <sshConfig host="ec2-18-217-145-160.us-east-2.compute.amazonaws.com" id="0f772543-1143-4cce-9b28-56b64b983baa" keyPath="C:\Users\bcolak\Downloads\django-test-server-professor.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
+      <sshConfig host="ec2-15-161-243-87.eu-south-1.compute.amazonaws.com" id="c87a0ee9-4e2d-44dc-9f6f-b5b891944fc4" keyPath="C:\Users\bcolak\Downloads\Rovenma1.pem" port="22" nameFormat="DESCRIPTIVE" username="centos" />
     </configs>
   </component>
 </project>
