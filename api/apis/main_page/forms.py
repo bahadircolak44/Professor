@@ -7,9 +7,13 @@ from api.db_models.universities import Universities
 class UniversityForm(ModelForm):
     class Meta:
         model = Universities
-        exclude = ('', )
+        exclude = ('',)
 
 
 class MainPageForm(forms.Form):
     university = UniversityForm()
     prof = forms.CharField()
+
+
+class MainPagePostForm(forms.Form):
+    university = forms.IntegerField(required=True)

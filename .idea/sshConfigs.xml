@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="ec2-18-217-145-160.us-east-2.compute.amazonaws.com" id="0f772543-1143-4cce-9b28-56b64b983baa" keyPath="C:\Users\bcolak\Downloads\django-test-server-professor.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" />
+    </configs>
+  </component>
+</project>

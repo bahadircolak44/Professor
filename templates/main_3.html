@@ -107,11 +107,15 @@
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-form u-form-1">
           <form action="#" method="POST" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="custom" name="form">
-            <div class="u-form-group u-form-select u-form-group-1">
+            {% csrf_token %}
+              <div class="u-form-group u-form-select u-form-group-1">
               <label for="select-faf8" class="u-form-control-hidden u-label">Select</label>
               <div class="u-form-select-wrapper">
                 <select id="select-faf8" name="university" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
-                  <option value="Item 1">Item 1</option>
+
+                    {% for u in university_all %}
+                    <option value="{{ u.name }}">{{ u.name }}</option>
+                    {% endfor %}
                   <option value="Item 2">Item 2</option>
                   <option value="Item 3">Item 3</option>
                 </select>
