@@ -60,9 +60,9 @@
                       {% csrf_token %}
                     {% for p in professor %}
                       <tr style="height: 49px;">
-                        <td class="u-border-2 u-border-palette-2-light-2 u-table-cell u-table-cell-3">{{ p.first_name }} {{ p.last_name }}</td>
+                        <td  class="u-border-2 u-border-palette-2-light-2 u-table-cell u-table-cell-3"><a href="/professor?prof_id={{ p.id }}">{{ p.first_name }} {{ p.last_name }}</a></td>
                         <td class="u-border-2 u-border-palette-2-light-2 u-palette-3-light-3 u-table-cell u-table-cell-4">
-                            {{ p.rate }}</td>
+                            {{ p.total_rate }}</td>
                       </tr>
                     {% endfor %}
                     </tbody>

@@ -5,7 +5,9 @@ from django.views import View
 from rest_framework import status
 from rest_framework.response import Response
 
-from .forms import UserForm, LoginForm
+from api.db_models.professor import Professor
+from api.db_models.student import Student
+from .forms import StudentForm, ProfessorForm, LoginForm
 from .helpers import UserHelpers
 
 
@@ -34,13 +36,43 @@ class UserRegisterStepView(View):
         return render(request, template_name='step1.html', context={})
 
 
-class UserRegisterView(View):
+class StudentRegisterView(View):
     def get(self, request, *args, **kwargs):
-        context = {'forms': UserForm}
-        return render(request, template_name='register_1.html', context=context)
+        context = {'forms': StudentForm}
+        return render(request, template_name='student_register.html', context=context)
 
     def post(self, request, *args, **kwargs):
-        form = UserForm(data=request.POST)
+        form = StudentForm(data=request.POST)
         form.is_valid()
-        form.save()
+        if not form.errors:
+            email = form.cleaned_data.get('email')
+            if UserHelpers.split_email(email):
+                form.cleaned_data['user_type'] = 'student'
+                student = Student.objects.create_user(**form.cleaned_data)
+                student.save()
+            else:
+                pass
+                # TODO invalid email type. Email should contain edu.tr
+
+        return render(request, template_name='login.html', context={})
+
+
+class ProfessorRegisterView(View):
+    def get(self, request, *args, **kwargs):
+        context = {'forms': ProfessorForm}
+        return render(request, template_name='professor_register.html', context=context)
+
+    def post(self, request, *args, **kwargs):
+        form = ProfessorForm(data=request.POST)
+        form.is_valid()
+        if not form.errors:
+            email = form.cleaned_data.get('email')
+            if UserHelpers.split_email(email):
+                form.cleaned_data['user_type'] = 'staff'
+                student = Professor.objects.create_user(**form.cleaned_data)
+                student.save()
+            else:
+                pass
+                # TODO invalid email type. Email should contain edu.tr
+
         return render(request, template_name='login.html', context={})

@@ -1,3 +1,5 @@
+import re
+
 from authentication.db_models.users import Users
 
 from rest_framework_jwt.settings import api_settings
@@ -12,3 +14,10 @@ class UserHelpers:
         payload = jwt_payload_handler(user)
         token = jwt_encode_handler(payload)
         return token
+
+    @staticmethod
+    def split_email(email):
+        m = re.search(r'(.+)@(.+)\.(.+)\.(.+)', email)
+        if m:
+            return m.groups()[-2:] == ('edu', 'tr')
+        return False

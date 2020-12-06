@@ -13,6 +13,7 @@ class Professor(Users, MemberBase):
     style = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)], default=0)
     teach_rate = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)], default=0)
     approach_rate = models.FloatField(validators=[MinValueValidator(0), MaxValueValidator(10)], default=0)
+    title = models.CharField(null=True, max_length=64)
 
     class Meta:
         db_table = 'db_professor'
