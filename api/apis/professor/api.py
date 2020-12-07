@@ -20,7 +20,7 @@ class ProfessorViewSet(LoginRequiredMixin, View):
             professor = Professor.objects.filter(id=professor_id).first()
             if professor_id:
                 comments = Comment.objects.filter(professor_id=professor_id)
-                context = dict(professor=professor, comments=comments)
+                context = dict(professor=professor, comment=comments)
             else:
                 pass
                 # TODO professor does not exist
@@ -73,4 +73,5 @@ class ProfessorViewSet(LoginRequiredMixin, View):
             comment_data = cleaned_data.get('comment')
             comment = Comment.objects.create(comment=comment_data, professor_id=professor_id,
                                              student_id=request.user.student_id)
+            comment.save()
             return HttpResponseRedirect(f'/professor/?professor_id={professor_id}')
