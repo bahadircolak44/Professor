@@ -14,6 +14,8 @@
     <script class="u-script" type="text/javascript" src="{% static 'nicepage.js' %}" defer=""></script>
     <meta name="generator" content="Nicepage 3.0.9, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700">
+
     <meta property="og:title" content="prof_page">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#478ac9">
@@ -27,9 +29,8 @@
       </div></header>
     <section class="u-align-center u-clearfix u-section-1" id="carousel_e132">
       <div class="u-clearfix u-sheet u-sheet-1">
-          {% csrf_token %}
-        <h1 class="u-text u-text-1">{{ forms.initial.first_name }} {{ forms.initial.last_name }}</h1>
-        <h6 class="u-text u-text-2">{{ forms.initial.email }}</h6>
+        <h1 class="u-text u-text-1">{{ professor.first_name }} {{ professor.last_name }}</h1>
+        <h6 class="u-text u-text-2">{{ professor.email }}</h6>
         <div class="u-table u-table-responsive u-table-1">
           <table class="u-table-entity u-table-entity-1">
             <colgroup>
@@ -46,39 +47,184 @@
             {% csrf_token %}
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Kibar</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.kindness }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ professor.kindness_rate|floatformat:1 }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Öğretme Beğenisi</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.teach_rate }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ professor.teach_rate|floatformat:1 }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Öğrenciye Yaklaşımı</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.approach_rate }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ professor.approach_rate|floatformat:1 }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Seksi</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.hot_rate }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ professor.hot_rate|floatformat:1 }}</td>
               </tr>
               <tr style="height: 52px;">
-                <td class="u-border-4 u-border-white u-table-cell">Still</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.style }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">Geri Dönüş</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ professor.response_rate|floatformat:1 }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Maaş Tahmini</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.salary_estimation }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ professor.salary_estimation|floatformat:1 }}</td>
               </tr>
               <tr style="height: 52px;">
                 <td class="u-border-4 u-border-white u-table-cell">Toplam</td>
-                <td class="u-border-4 u-border-white u-table-cell">{{ forms.initial.total_rate }}</td>
+                <td class="u-border-4 u-border-white u-table-cell">{{ professor.total_rate|floatformat:1 }}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </section>
-    <section class="u-clearfix u-section-2" id="sec-e807">
-      <div class="u-clearfix u-sheet u-sheet-1"></div>
+    <section class="u-align-center u-clearfix u-valign-top-xs u-white u-section-2" id="carousel_693a">
+
+        <form method="post" action="" class="u-clearfix u-sheet u-sheet-1">
+            {% csrf_token %}
+        <div class="u-expanded-width u-list u-repeater u-list-1">
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+              <img src="{% static "images/50e0d244425ab108f5d084609629317e113fdce15b4c704f752878d6964cc651_1280.png" %}" alt="" class="u-image u-image-default u-image-1" data-image-width="1280" data-image-height="1280">
+              <div class="u-align-left u-container-style u-group u-white u-group-1">
+                <div class="u-container-layout u-valign-middle u-container-layout-2">
+                  <h4 class="u-custom-font u-font-oswald u-text u-text-palette-1-base u-text-1">Ders Anlatışı</h4>
+                  <p class="u-text u-text-grey-50 u-text-2">Bu hocanın dersini anlıyor musun?</p>
+                  <div class="rate" id="rate1">
+                    <input type="radio" id="star5" name="teach_rate" value="5" />
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="teach_rate" value="4" />
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="teach_rate" value="3" />
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="teach_rate" value="2" />
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="teach_rate" value="1" />
+                    <label for="star1" title="text">1 star</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-valign-bottom-md u-valign-bottom-sm u-container-layout-3">
+              <img src="{% static "images/57e6d5424c5ab108f5d084609629317e113fdce15b4c704f752878d6964cc258_1280.png"%}" alt="" class="u-image u-image-default u-image-2" data-image-width="462" data-image-height="338">
+              <div class="u-align-left u-container-style u-group u-white u-group-2">
+                <div class="u-container-layout u-valign-middle u-container-layout-4">
+                  <h4 class="u-custom-font u-font-oswald u-text u-text-palette-1-base u-text-3">Öğrenciye Yaklaşımı</h4>
+                  <p class="u-text u-text-default u-text-grey-50 u-text-4">Öğrenci ile temas kuruyor mu?</p>
+                  <div class="rate" id="rate2">
+                    <input type="radio" id="star52" name="approach_rate" value="5" />
+                    <label for="star52" title="text">5 stars</label>
+                    <input type="radio" id="star42" name="approach_rate" value="4" />
+                    <label for="star42" title="text">4 stars</label>
+                    <input type="radio" id="star32" name="approach_rate" value="3" />
+                    <label for="star32" title="text">3 stars</label>
+                    <input type="radio" id="star22" name="approach_rate" value="2" />
+                    <label for="star22" title="text">2 stars</label>
+                    <input type="radio" id="star12" name="approach_rate" value="1" />
+                    <label for="star12" title="text">1 star</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-valign-bottom-md u-valign-bottom-sm u-container-layout-5">
+              <img src="{% static 'images/51e2d44b4c4fad0bffd8992cc62e377a153ddaed4e507749722c79d5954ecd_1280.jpg' %}" alt="" class="u-image u-image-default u-image-3" data-image-width="462" data-image-height="338">
+              <div class="u-align-left u-container-style u-group u-white u-group-3">
+                <div class="u-container-layout u-valign-middle u-container-layout-6">
+                  <h4 class="u-custom-font u-font-oswald u-text u-text-palette-1-base u-text-5">Nezaket</h4>
+                  <p class="u-text u-text-default u-text-grey-50 u-text-6">İnsanlara karşı nazik midir?</p>
+                  <div class="rate" id="rate3">
+                    <input type="radio" id="star53" name="kindness_rate" value="5" />
+                    <label for="star53" title="text">5 stars</label>
+                    <input type="radio" id="star43" name="kindness_rate" value="4" />
+                    <label for="star43" title="text">4 stars</label>
+                    <input type="radio" id="star33" name="kindness_rate" value="3" />
+                    <label for="star33" title="text">3 stars</label>
+                    <input type="radio" id="star23" name="kindness_rate" value="2" />
+                    <label for="star23" title="text">2 stars</label>
+                    <input type="radio" id="star13" name="kindness_rate" value="1" />
+                    <label for="star13" title="text">1 star</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-valign-bottom-md u-valign-bottom-sm u-container-layout-7">
+              <img src="{% static 'images/54e0d7404d4fad0bffd8992cc62e377a153ddaed4e507749722c79d59544c7_1280.jpg' %}" alt="" class="u-image u-image-default u-image-4" data-image-width="462" data-image-height="338">
+              <div class="u-align-left u-container-style u-group u-white u-group-4">
+                <div class="u-container-layout u-valign-middle u-container-layout-8">
+                  <h4 class="u-custom-font u-font-oswald u-text u-text-palette-1-base u-text-7">Seksi</h4>
+                  <p class="u-text u-text-default u-text-grey-50 u-text-8">Ne kadar çekici buluyorsun?</p>
+                  <div class="rate" id="rate4">
+                    <input type="radio" id="star54" name="hot_rate" value="5" />
+                    <label for="star54" title="text">5 stars</label>
+                    <input type="radio" id="star44" name="hot_rate" value="4" />
+                    <label for="star44" title="text">4 stars</label>
+                    <input type="radio" id="star34" name="hot_rate" value="3" />
+                    <label for="star34" title="text">3 stars</label>
+                    <input type="radio" id="star24" name="hot_rate" value="2" />
+                    <label for="star24" title="text">2 stars</label>
+                    <input type="radio" id="star14" name="hot_rate" value="1" />
+                    <label for="star14" title="text">1 star</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-container-layout-9">
+              <img src="{% static 'images/52e6d54b4d50b108f5d084609629317e113fdce15b4c704f752878d6964ec651_1280.jpg' %}" alt="" class="u-image u-image-default u-image-5" data-image-width="462" data-image-height="338">
+              <div class="u-align-left u-container-style u-group u-white u-group-5">
+                <div class="u-container-layout u-valign-middle u-container-layout-10">
+                  <h4 class="u-custom-font u-font-oswald u-text u-text-palette-1-base u-text-9">Hızlı dönüş</h4>
+                  <p class="u-text u-text-grey-50 u-text-10">Mail attığında ya da soru sorduğunda ne kadar hızlı cevap alıyorsun?</p>
+                  <div class="rate" id="rate5">
+                    <input type="radio" id="star55" name="response_rate" value="5" />
+                    <label for="star55" title="text">5 stars</label>
+                    <input type="radio" id="star45" name="response_rate" value="4" />
+                    <label for="star45" title="text">4 stars</label>
+                    <input type="radio" id="star35" name="response_rate" value="3" />
+                    <label for="star35" title="text">3 stars</label>
+                    <input type="radio" id="star25" name="response_rate" value="2" />
+                    <label for="star25" title="text">2 stars</label>
+                    <input type="radio" id="star15" name="response_rate" value="1" />
+                    <label for="star15" title="text">1 star</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-container-style u-list-item u-repeater-item">
+            <div class="u-container-layout u-similar-container u-container-layout-11">
+              <img src="https://pixabay.com/get/53e0d4454b51b108f5d084609629317e113fdce15b4c704f752878d6964ec35a_1280.jpg" alt="" class="u-image u-image-default u-image-6" data-image-width="462" data-image-height="338">
+              <div class="u-align-left u-container-style u-group u-white u-group-6">
+                <div class="u-container-layout u-valign-middle u-container-layout-12">
+                  <h4 class="u-custom-font u-font-oswald u-text u-text-palette-1-base u-text-11">Maaş Tahmini</h4>
+                  <p class="u-text u-text-grey-50 u-text-12">Bu hoca ne kadar maaş alıyordur?</p>
+                  <div class="rate" id="rate6">
+                    <input type="radio" id="star56" name="salary_estimation" value="5" />
+                    <label for="star56" title="text">5 stars</label>
+                    <input type="radio" id="star46" name="salary_estimation" value="4" />
+                    <label for="star46" title="text">4 stars</label>
+                    <input type="radio" id="star36" name="salary_estimation" value="3" />
+                    <label for="star36" title="text">3 stars</label>
+                    <input type="radio" id="star26" name="salary_estimation" value="2" />
+                    <label for="star26" title="text">2 stars</label>
+                    <input type="radio" id="star16" name="salary_estimation" value="1" />
+                    <label for="star16" title="text">1 star</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            <input type="submit" value="Kaydet" class="u-border-2 u-border-black u-btn u-btn-submit u-button-style u-hover-black u-none u-text-black u-text-hover-white u-btn-1">
+
+        </div>
+               </form>
     </section>
     
     

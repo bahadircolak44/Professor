@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.views import View
@@ -7,7 +9,10 @@ from api.db_models.professor import Professor
 from api.db_models.universities import Universities
 
 
-class MainPageView(View):
+class MainPageView(LoginRequiredMixin, View):
+    login_url = '/login/'
+    redirect_field_name = ''
+
     def get(self, request, *args, **kwargs):
         university_list = Universities.objects.order_by('-rate')[:5]
         professor_list = Professor.objects.order_by('-total_rate')[:5]

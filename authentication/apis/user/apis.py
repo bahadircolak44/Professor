@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
@@ -29,6 +29,12 @@ class UserLoginView(View):
             token = UserHelpers.generate_token(user)
             return HttpResponseRedirect('/main/')
         return HttpResponse(status=status.HTTP_200_OK)
+
+
+class UserLogoutView(View):
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        return HttpResponseRedirect('/login/')
 
 
 class UserRegisterStepView(View):
@@ -69,8 +75,9 @@ class ProfessorRegisterView(View):
             email = form.cleaned_data.get('email')
             if UserHelpers.split_email(email):
                 form.cleaned_data['user_type'] = 'staff'
-                student = Professor.objects.create_user(**form.cleaned_data)
-                student.save()
+                form.cleaned_data['title'] = 'Professor'
+                professor = Professor.objects.create_user(**form.cleaned_data)
+                professor.save()
             else:
                 pass
                 # TODO invalid email type. Email should contain edu.tr

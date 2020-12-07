@@ -20,8 +20,8 @@ class ProfessorForm(ModelForm):
 
     class Meta:
         model = Professor
-        exclude = ('is_admin', 'last_login', 'total_rate', 'salary_estimation', 'hot_rate', 'kindness', 'style',
-                   'teach_rate', 'approach_rate')
+        exclude = ('is_admin', 'last_login', 'total_rate', 'salary_estimation', 'hot_rate', 'kindness_rate', 'response_rate',
+                   'teach_rate', 'approach_rate', 'title', 'total_rate_count')
 
 
 class LoginForm(forms.Form):

@@ -19,7 +19,7 @@ from django.urls import path, include
 from api.apis.main_page.api import MainPageView
 from api.apis.professor.api import ProfessorViewSet
 from authentication.apis.user.apis import UserLoginView, UserRegisterStepView, StudentRegisterView, \
-    ProfessorRegisterView
+    ProfessorRegisterView, UserLogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,10 +27,10 @@ urlpatterns = [
     # path('v1/', include(auth_router.urls)),
     path('', UserLoginView.as_view(), name='main'),
     path('login/', UserLoginView.as_view(), name='login'),
+    path('logout/', UserLogoutView.as_view(), name='logout'),
     path('step/', UserRegisterStepView.as_view(), name='step'),
     path('student_register/', StudentRegisterView.as_view(), name='student_register'),
     path('professor_register/', ProfessorRegisterView.as_view(), name='professor_register'),
     path('main/', MainPageView.as_view(), name='main'),
     path('professor/', ProfessorViewSet.as_view(), name='professor')
-
 ]
