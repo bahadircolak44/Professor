@@ -22,3 +22,4 @@ class ProfessorViewSet(View):
                 context = dict(forms=professor_form, comments=comments)
                 return render(request, template_name='prof_page.html', context=context)
         return HttpResponseRedirect('/login/')
+
