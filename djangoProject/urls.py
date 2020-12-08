@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from api.apis.like.api import LikeViewSet
 from api.apis.main_page.api import MainPageView
 from api.apis.professor.api import ProfessorViewSet
 from authentication.apis.user.apis import UserLoginView, UserRegisterStepView, StudentRegisterView, \
@@ -32,5 +33,6 @@ urlpatterns = [
     path('student_register/', StudentRegisterView.as_view(), name='student_register'),
     path('professor_register/', ProfessorRegisterView.as_view(), name='professor_register'),
     path('main/', MainPageView.as_view(), name='main'),
+    path('like/', LikeViewSet.as_view(), name='like'),
     path('professor/', ProfessorViewSet.as_view(), name='professor')
 ]

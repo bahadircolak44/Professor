@@ -1,3 +1,5 @@
+import traceback
+
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -13,9 +15,11 @@ from .helpers import UserHelpers
 
 class UserLoginView(View):
     def get(self, request, *args, **kwargs):
+        request.session.flush()
         return render(request, template_name='login.html', context={})
 
     def post(self, request, *args, **kwargs):
+        print("LOGIN GIRIS")
         form = LoginForm(request.POST)
         form.is_valid()
         if form.errors:
@@ -24,6 +28,8 @@ class UserLoginView(View):
         email = data.get('email')
         password = data.get('password')
         user = authenticate(email=email, password=password)
+
+        print("USER: ", user)
         if user:
             login(request, user)
             token = UserHelpers.generate_token(user)
@@ -48,19 +54,23 @@ class StudentRegisterView(View):
         return render(request, template_name='student_register.html', context=context)
 
     def post(self, request, *args, **kwargs):
-        form = StudentForm(data=request.POST)
-        form.is_valid()
-        if not form.errors:
-            email = form.cleaned_data.get('email')
-            if UserHelpers.split_email(email):
-                form.cleaned_data['user_type'] = 'student'
-                student = Student.objects.create_user(**form.cleaned_data)
-                student.save()
+        try:
+            form = StudentForm(data=request.POST)
+            form.is_valid()
+            if not form.errors:
+                email = form.cleaned_data.get('email')
+                if UserHelpers.split_email(email):
+                    form.cleaned_data['user_type'] = 'student'
+                    student = Student.objects.create_user(**form.cleaned_data)
+                    student.save()
+                else:
+                    pass
+                    # TODO invalid email type. Email should contain edu.tr
             else:
-                pass
-                # TODO invalid email type. Email should contain edu.tr
-
-        return render(request, template_name='login.html', context={})
+                print(form.errors)
+            return render(request, template_name='login.html', context={})
+        except:
+            print(traceback.format_exc())
 
 
 class ProfessorRegisterView(View):

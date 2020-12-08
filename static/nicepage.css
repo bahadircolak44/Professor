@@ -5107,7 +5107,7 @@ a {
   width: calc(100% +  10px);
 }
 .u-form-vertical.u-form-spacing-10 .u-form-group {
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
   padding-left: 10px;
 }
 .u-form-vertical.u-form-spacing-9 {
